@@ -282,6 +282,6 @@ xxx
 .
 <div class="name">
 <p>xxx
-	:::</p>
+:::</p>
 </div>
 .
