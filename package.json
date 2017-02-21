@@ -5,7 +5,8 @@
   "repository": "markdown-it/markdown-it-container",
   "license": "MIT",
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "build": "make"
   },
   "keywords": [
     "markdown-it-plugin",
@@ -13,14 +14,14 @@
     "markdown"
   ],
   "devDependencies": {
-    "browserify": "*",
-    "coveralls": "^2.11.2",
-    "eslint": "0.13.0",
-    "eslint-plugin-nodeca": "^1.0.0",
-    "istanbul": "*",
-    "markdown-it": "markdown-it/markdown-it",
-    "markdown-it-testgen": "~0.1.0",
-    "mocha": "*",
-    "uglify-js": "*"
+    "browserify": "14.1.0",
+    "coveralls": "2.11.16",
+    "eslint": "3.16.0",
+    "eslint-plugin-nodeca": "1.0.3",
+    "istanbul": "0.4.5",
+    "markdown-it": "GerHobbelt/markdown-it",
+    "markdown-it-testgen": "0.1.4",
+    "mocha": "3.2.0",
+    "uglify-js": "2.7.5"
   }
 }
