@@ -10,14 +10,14 @@ module.exports = function container_plugin(md, name, options) {
     return params.trim().split(' ', 2)[0] === name;
   }
 
-  function renderDefault(tokens, idx, _options, env, self) {
+  function renderDefault(tokens, idx, _options, env, _self) {
 
     // add a class to the opening tag
     if (tokens[idx].nesting === 1) {
       tokens[idx].attrPush([ 'class', name ]);
     }
 
-    return self.renderToken(tokens, idx, _options, env, self);
+    return _self.renderToken(tokens, idx, _options, env, _self);
   }
 
   options = options || {};
