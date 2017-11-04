@@ -1,12 +1,13 @@
 {
-  "name": "markdown-it-container",
-  "version": "2.0.1-2",
+  "name": "@gerhobbelt/markdown-it-container",
+  "version": "2.0.1-3",
   "description": "Plugin to create block-level custom containers for markdown-it markdown parser",
-  "repository": "markdown-it/markdown-it-container",
+  "repository": "GerHobbelt/markdown-it-container",
   "license": "MIT",
   "scripts": {
     "test": "make test",
-    "build": "make"
+    "build": "make",
+    "pub": "npm publish --access public"
   },
   "keywords": [
     "markdown-it-plugin",
@@ -14,14 +15,13 @@
     "markdown"
   ],
   "devDependencies": {
-    "browserify": "14.1.0",
-    "coveralls": "2.11.16",
-    "eslint": "3.16.0",
-    "eslint-plugin-nodeca": "1.0.3",
+    "browserify": "14.5.0",
+    "coveralls": "3.0.0",
+    "eslint": "4.10.0",
     "istanbul": "0.4.5",
-    "markdown-it": "GerHobbelt/markdown-it",
-    "markdown-it-testgen": "0.1.4",
-    "mocha": "3.2.0",
-    "uglify-js": "2.7.5"
+    "@gerhobbelt/markdown-it": "8.4.0-16",
+    "@gerhobbelt/markdown-it-testgen": "0.1.5-5",
+    "mocha": "4.0.1",
+    "uglify-js": "3.1.6"
   }
 }

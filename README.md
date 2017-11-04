@@ -1,8 +1,8 @@
 # markdown-it-container
 
-[![Build Status](https://img.shields.io/travis/markdown-it/markdown-it-container/master.svg?style=flat)](https://travis-ci.org/markdown-it/markdown-it-container)
-[![NPM version](https://img.shields.io/npm/v/markdown-it-container.svg?style=flat)](https://www.npmjs.org/package/markdown-it-container)
-[![Coverage Status](https://img.shields.io/coveralls/markdown-it/markdown-it-container/master.svg?style=flat)](https://coveralls.io/r/markdown-it/markdown-it-container?branch=master)
+[![Build Status](https://img.shields.io/travis/GerHobbelt/markdown-it-container/master.svg?style=flat)](https://travis-ci.org/GerHobbelt/markdown-it-container)
+[![NPM version](https://img.shields.io/npm/v/@gerhobbelt/markdown-it-container.svg?style=flat)](https://www.npmjs.org/package/@gerhobbelt/markdown-it-container)
+[![Coverage Status](https://img.shields.io/coveralls/GerHobbbelt/markdown-it-container/master.svg?style=flat)](https://coveralls.io/r/GerHobbelt/markdown-it-container?branch=master)
 
 > Plugin for creating block-level custom containers for [markdown-it](https://github.com/markdown-it/markdown-it) markdown parser.
 
@@ -34,16 +34,16 @@ Difference is, that marker use another character and content is rendered as mark
 node.js, browser:
 
 ```bash
-$ npm install markdown-it-container --save
-$ bower install markdown-it-container --save
+$ npm install @gerhobbelt/markdown-it-container --save
+$ bower install @gerhobbelt/markdown-it-container --save
 ```
 
 
 ## API
 
 ```js
-var md = require('markdown-it')()
-            .use(require('markdown-it-container'), name [, options]);
+var md = require('@gerhobbelt/markdown-it')()
+            .use(require('@gerhobbelt/markdown-it-container'), name [, options]);
 ```
 
 Params:
@@ -59,9 +59,9 @@ Params:
 ## Example
 
 ```js
-var md = require('markdown-it')();
+var md = require('@gerhobbelt/markdown-it')();
 
-md.use(require('markdown-it-container'), 'spoiler', {
+md.use(require('@gerhobbelt/markdown-it-container'), 'spoiler', {
 
   validate: function(params) {
     return params.trim().match(/^spoiler\s+(.*)$/);
@@ -92,4 +92,4 @@ console.log(md.render('::: spoiler click me\n*content*\n:::\n'));
 
 ## License
 
-[MIT](https://github.com/markdown-it/markdown-it-container/blob/master/LICENSE)
+[MIT](https://github.com/GerHobbelt/markdown-it-container/blob/master/LICENSE)
