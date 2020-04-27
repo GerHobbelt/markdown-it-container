@@ -32,6 +32,7 @@ module.exports = function container_plugin(md, name, options) {
     var pos, nextLine, marker_count, markup, params, token,
         old_parent, old_line_max,
         auto_closed = false,
+        originalPos,
         start = state.bMarks[startLine] + state.tShift[startLine],
         max = state.eMarks[startLine];
 
@@ -47,6 +48,9 @@ module.exports = function container_plugin(md, name, options) {
         break;
       }
     }
+
+
+    originalPos = start
 
     marker_count = Math.floor((pos - start) / marker_len);
     if (marker_count < min_markers) { return false; }
@@ -121,6 +125,8 @@ module.exports = function container_plugin(md, name, options) {
     token.block  = true;
     token.info   = params;
     token.map    = [ startLine, nextLine ];
+    token.position = originalPos;
+    token.size = state.eMarks[nextLine] - originalPos;
 
     state.md.block.tokenize(state, startLine + 1, nextLine);
 
