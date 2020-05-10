@@ -1,13 +1,13 @@
 'use strict';
 
 
-var assert = require('assert');
+let assert = require('assert');
 
 /*eslint-env mocha*/
 
 describe('api', function () {
   it('renderer', function () {
-    var res = require('@gerhobbelt/markdown-it')()
+    let res = require('@gerhobbelt/markdown-it')()
                 .use(require('../'), 'spoiler', {
                   render: function (tokens, idx) {
                     return tokens[idx].nesting === 1
@@ -21,7 +21,7 @@ describe('api', function () {
   });
 
   it('2 char marker', function () {
-    var res = require('@gerhobbelt/markdown-it')()
+    let res = require('@gerhobbelt/markdown-it')()
                 .use(require('../'), 'spoiler', {
                   marker: '->'
                 })
@@ -31,7 +31,7 @@ describe('api', function () {
   });
 
   it('marker should not collide with fence', function () {
-    var res = require('@gerhobbelt/markdown-it')()
+    let res = require('@gerhobbelt/markdown-it')()
                 .use(require('../'), 'spoiler', {
                   marker: '`'
                 })
@@ -41,7 +41,7 @@ describe('api', function () {
   });
 
   it('marker should not collide with fence #2', function () {
-    var res = require('@gerhobbelt/markdown-it')()
+    let res = require('@gerhobbelt/markdown-it')()
                 .use(require('../'), 'spoiler', {
                   marker: '`'
                 })
@@ -52,7 +52,7 @@ describe('api', function () {
 
   describe('validator', function () {
     it('should skip rule if return value is falsy', function () {
-      var res = require('@gerhobbelt/markdown-it')()
+      let res = require('@gerhobbelt/markdown-it')()
                  .use(require('../'), 'name', {
                    validate: function () { return false; }
                  })
@@ -62,7 +62,7 @@ describe('api', function () {
     });
 
     it('should accept rule if return value is true', function () {
-      var res = require('@gerhobbelt/markdown-it')()
+      let res = require('@gerhobbelt/markdown-it')()
                  .use(require('../'), 'name', {
                    validate: function () { return true; }
                  })
@@ -72,7 +72,7 @@ describe('api', function () {
     });
 
     it('rule should call it', function () {
-      var count = 0;
+      let count = 0;
 
       require('@gerhobbelt/markdown-it')()
         .use(require('../'), 'name', {

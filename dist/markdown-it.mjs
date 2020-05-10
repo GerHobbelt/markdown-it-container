@@ -1,10 +1,7 @@
 // Process block-level custom containers
-//
-
-'use strict';
 
 
-module.exports = function container_plugin(md, name, options) {
+var markdownItContainer = function container_plugin(md, name, options) {
 
   function validateDefault(params) {
     return params.trim().split(' ', 2)[0] === name;
@@ -142,3 +139,5 @@ module.exports = function container_plugin(md, name, options) {
   md.renderer.rules['container_' + name + '_open'] = render;
   md.renderer.rules['container_' + name + '_close'] = render;
 };
+
+export default markdownItContainer;

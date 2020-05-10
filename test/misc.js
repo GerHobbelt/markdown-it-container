@@ -1,13 +1,13 @@
 'use strict';
 
 
-var assert = require('assert');
+let assert = require('assert');
 
 /*eslint-env mocha*/
 
 describe('coverage', function () {
   it('marker coverage', function () {
-    var tok = require('@gerhobbelt/markdown-it')()
+    let tok = require('@gerhobbelt/markdown-it')()
                 .use(require('../'), 'fox', {
                   marker: 'foo',
                   validate: function (p) { assert.equal(p, 'fox'); return 1; }
