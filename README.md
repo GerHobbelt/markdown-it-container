@@ -91,13 +91,14 @@ console.log(md.render('::: spoiler click me\n*content*\n:::\n'));
 ```
 
 ## Example with markdown-it-decorate
-then you can use [markdown-it-decorate](https://github.com/rstacruz/markdown-it-decorate) syntax like '#my-id.my-class title="hello"'
+
+You can use [markdown-it-decorate](https://github.com/rstacruz/markdown-it-decorate) syntax like '#my-id.my-class title="hello"'
 
 ```js
-var md = require('markdown-it')();
+var md = require('@gerhobbelt/markdown-it')();
 
-md.use(require('markdown-it-decorate'))
-  .use(require('markdown-it-container'), 'decorate' , {
+md.use(require('@gerhobbelt/markdown-it-decorate'))
+  .use(require('@gerhobbelt/markdown-it-container'), 'decorate' , {
             validate: function(params) {
                 return params.trim().match(/^(.*)$/);
             },
