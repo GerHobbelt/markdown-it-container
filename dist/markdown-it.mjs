@@ -19,8 +19,10 @@ var markdownItContainer = function container_plugin(md, name, options) {
 
   options = options || {};
 
-  let min_markers = 3,
+  let min_markers = options.minMarkerCount || 3,
       marker_str  = options.marker || ':',
+      end_marker_str  = options.endMarker || marker_str,
+      end_marker_len = end_marker_str.length,
       marker_char = marker_str.charCodeAt(0),
       marker_len  = marker_str.length,
       validate    = options.validate || validateDefault,
@@ -91,16 +93,16 @@ var markdownItContainer = function container_plugin(md, name, options) {
       }
 
       for (pos = start + 1; pos <= max; pos++) {
-        if (marker_str[(pos - start) % marker_len] !== state.src[pos]) {
+        if (end_marker_str[(pos - start) % end_marker_len] !== state.src[pos]) {
           break;
         }
       }
 
       // closing code fence must be at least as long as the opening one
-      if (Math.floor((pos - start) / marker_len) < marker_count) { continue; }
+      if (Math.floor((pos - start) / end_marker_len) < marker_count) { continue; }
 
       // make sure tail has spaces only
-      pos -= (pos - start) % marker_len;
+      pos -= (pos - start) % end_marker_len;
       pos = state.skipSpaces(pos);
 
       if (pos < max) { continue; }
