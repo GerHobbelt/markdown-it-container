@@ -62,7 +62,7 @@ module.exports = function container_plugin(md, name, options) {
     //
     if (silent) { return true; }
 
-    var contentStart = max;
+    let contentStart = max;
 
     // Search for the end of the block
     //

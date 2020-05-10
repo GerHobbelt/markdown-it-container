@@ -30,7 +30,8 @@ module.exports = function container_plugin(md, name, options) {
       marker_char = marker_str.charCodeAt(0),
       marker_len  = marker_str.length,
       validate    = options.validate || validateDefault,
-      render      = options.render || renderDefault;
+      render      = options.render || renderDefault,
+      customContent = !!options.content;
 
   function container(state, startLine, endLine, silent) {
     let pos, nextLine, marker_count, markup, params, token,
@@ -63,6 +64,8 @@ module.exports = function container_plugin(md, name, options) {
     // Since start is found, we can report success here in validation mode
     //
     if (silent) { return true; }
+
+    let contentStart = max;
 
     // Search for the end of the block
     //
@@ -126,7 +129,13 @@ module.exports = function container_plugin(md, name, options) {
     token.info   = params;
     token.map    = [ startLine, nextLine ];
 
-    state.md.block.tokenize(state, startLine + 1, nextLine);
+    if (customContent) {
+      token = state.push('container_' + name + '_content', 'div', 0);
+      token.markup = state.src.slice(contentStart, start);
+      token.block = true;
+    } else {
+      state.md.block.tokenize(state, startLine + 1, nextLine);
+    }
 
     token        = state.push('container_' + name + '_close', 'div', -1);
     token.markup = state.src.slice(start, pos);
@@ -143,6 +152,9 @@ module.exports = function container_plugin(md, name, options) {
     alt: [ 'paragraph', 'reference', 'blockquote', 'list' ]
   });
   md.renderer.rules['container_' + name + '_open'] = render;
+  if (customContent) {
+    md.renderer.rules['container_' + name + '_content'] = options.content;
+  }
   md.renderer.rules['container_' + name + '_close'] = render;
 };
 

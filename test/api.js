@@ -6,7 +6,7 @@ let assert = require('assert');
 /*eslint-env mocha*/
 
 describe('api', function () {
-  it('container renderer', function() {
+  it('container renderer', function () {
     let res = require('@gerhobbelt/markdown-it')()
                 .use(require('../'), 'spoiler', {
                   render: function (tokens, idx) {
@@ -20,8 +20,8 @@ describe('api', function () {
     assert.equal(res, '<details><summary>click me</summary>\n<p><em>content</em></p>\n</details>\n');
   });
 
-  it('content renderer', function() {
-    var res = require('@gerhobbelt/markdown-it')()
+  it('content renderer', function () {
+    let res = require('@gerhobbelt/markdown-it')()
                 .use(require('../'), 'spoiler', {
                   content: function (tokens, idx) {
                     return '<mark>' + tokens[idx].markup + '</mark>';
