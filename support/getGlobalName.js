@@ -1,25 +1,25 @@
 #!/usr/bin/env node
-/*eslint no-console:0*/
 
-'use strict';
-
-let argparse = require('argparse');
-let pkg = require('../package.json');
+/* eslint no-console:0 */
 
 
-let cli = new argparse.ArgumentParser({
+
+const argparse = require('argparse');
+const hdr = require('./header.js');
+
+const cli = new argparse.ArgumentParser({
   prog: 'getGlobalName',
-  version: require('../package.json').version,
+  version: hdr.version,
   addHelp: true
 });
 
 cli.addArgument([ 'type' ], {
   help: 'type of name/string to produce',
   nargs: '?',
-  choices: [ 'global', 'package', 'version' ]
+  choices: [ 'global', 'package', 'version', 'license', 'microbundle' ]
 });
 
-let options = cli.parseArgs();
+const options = cli.parseArgs();
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -29,18 +29,22 @@ default:
   break;
 
 case 'version':
-  cli.exit(0, pkg.version);
+  cli.exit(0, hdr.version);
   break;
 
 case 'package':
-  cli.exit(0, pkg.name.replace(/^.*?\//, ''));
+  cli.exit(0, hdr.packageName);
   break;
 
 case 'global':
-  let name = pkg.name.replace(/^.*?\//, '');
-  name = name.replace('markdown-it', 'markdownit').replace(/-([a-z])/g, function (m, p1) {
-    return p1.toUpperCase();
-  });
-  cli.exit(0, name);
+  cli.exit(0, hdr.globalName);
+  break;
+
+case 'microbundle':
+  cli.exit(0, hdr.safeVariableName);
+  break;
+
+case 'license':
+  cli.exit(0, hdr.license);
   break;
 }

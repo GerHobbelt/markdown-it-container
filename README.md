@@ -90,14 +90,14 @@ console.log(md.render('::: spoiler click me\n*content*\n:::\n'));
 // </details>
 ```
 
-## Example with markdown-it-decorate
+## Example with markdown-it-attrs
 
-You can use [markdown-it-decorate](https://github.com/rstacruz/markdown-it-decorate) syntax like '#my-id.my-class title="hello"'
+You can use [markdown-it-attrs](https://github.com/rstacruz/markdown-it-attrs) syntax like '#my-id.my-class title="hello"'
 
 ```js
 var md = require('@gerhobbelt/markdown-it')();
 
-md.use(require('@gerhobbelt/markdown-it-decorate'))
+md.use(require('@gerhobbelt/markdown-it-attrs'))
   .use(require('@gerhobbelt/markdown-it-container'), 'decorate' , {
             validate: function(params) {
                 return params.trim().match(/^(.*)$/);
@@ -131,4 +131,4 @@ console.log(md.render('::: #n.ok title=hello\nccc\n:::'));
 
 ## License
 
-[MIT](https://github.com/GerHobbelt/markdown-it-container/blob/master/LICENSE)
+[MIT](https://github.com/GerHobbelt/markdown-it-container/LICENSE)

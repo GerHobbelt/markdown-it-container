@@ -6,34 +6,35 @@ env:
 extends: eslint:recommended
 
 parserOptions: 
-  ecmaVersion: 2018
+  ecmaVersion: 2020
+  sourceType: module
   
 rules:
   accessor-pairs:         2
   array-bracket-spacing:  [ 2, "always", { "singleValue": true, "objectsInArrays": true, "arraysInArrays": true } ]
-  block-scoped-var:       2
+  block-scoped-var:       1
   block-spacing:          2
-  brace-style:            [ 2, '1tbs', { allowSingleLine: true } ]
+  brace-style:            [ 1, '1tbs', { allowSingleLine: true } ]
   # Postponed
   #callback-return:        2
   comma-dangle:           2
   comma-spacing:          2
   comma-style:            2
   computed-property-spacing: [ 2, never ]
-  consistent-this:        [ 2, self ]
+  consistent-this:        [ 1, self ]
   consistent-return:      2
   # ? change to multi
   curly:                  [ 2, 'multi-line' ]
   dot-notation:           2
   eol-last:               2
   eqeqeq:                 [ 2, always, { "null": "ignore" } ]
-  func-style:             [ 2, declaration, { "allowArrowFunctions": true } ]
+  func-style:             [ 1, declaration, { "allowArrowFunctions": true } ]
   # Postponed
   #global-require:         2
-  guard-for-in:           2
+  guard-for-in:           1
   handle-callback-err:    2
 
-  indent:                 [ 2, 2, { VariableDeclarator: { var: 2, let: 2, const: 3 }, SwitchCase: 0, MemberExpression: "off", ignoreComments: true } ]
+  indent:                 [ 1, 2, { VariableDeclarator: { var: 2, let: 2, const: 3 }, SwitchCase: 0, MemberExpression: "off", ignoreComments: true } ]
 
   # key-spacing:            [ 2, { "align": "value" } ]
   keyword-spacing:        2
@@ -42,7 +43,7 @@ rules:
   max-nested-callbacks:   [ 1, 4 ]
   # string can exceed 80 chars, but should not overflow github website :)
   max-len:                [ 1, 140, 1000 ]
-  new-cap:                2
+  new-cap:                1
   new-parens:             2
   # Postponed
   #newline-after-var:      2
@@ -55,7 +56,7 @@ rules:
   no-cond-assign:         2
   no-console:             1
   no-constant-condition:  2
-  #no-control-regex:       2
+  no-control-regex:       1
   no-debugger:            1
   no-delete-var:          2
   no-div-regex:           2
@@ -90,8 +91,8 @@ rules:
   no-lonely-if:           2
   no-loop-func:           2
   no-mixed-requires:      2
-  no-mixed-spaces-and-tabs: 2
-  no-multi-str:         2
+  no-mixed-spaces-and-tabs: 1
+  no-multi-str:           1
   # Postponed
   #no-native-reassign:     2
   no-negated-in-lhs:      2
@@ -107,6 +108,7 @@ rules:
   no-octal-escape:        2
   no-path-concat:         2
   no-proto:               2
+  no-prototype-builtins:  1
   no-redeclare:           2
   # Postponed
   #no-regex-spaces:        2
@@ -114,19 +116,20 @@ rules:
   no-script-url:        2
   no-self-compare:        2
   no-sequences:           2
-  no-shadow:              2
+  no-shadow:              1
   no-shadow-restricted-names: 2
   no-sparse-arrays:       2
-  no-trailing-spaces:     2
-  no-undef:               2
+  no-trailing-spaces:     1
+  no-undef:               1
   no-undef-init:          2
-  no-undefined:           2
+  no-undefined:           1
   no-unexpected-multiline: 2
   no-unreachable:         2
   no-unused-expressions:  2
-  no-unused-vars:         2
-  no-use-before-define:   2
-  no-var:                 2
+  no-unused-vars:         1
+  no-use-before-define:   1
+  no-useless-escape:      1
+  no-var:                 1
   no-void:                2
   no-with:                2
   object-curly-spacing:   [ 2, always, { "objectsInObjects": true, "arraysInObjects": true } ]
@@ -136,14 +139,14 @@ rules:
   semi:                   [ 2, always ]
   semi-spacing:           2
   space-before-blocks:  2
-  space-before-function-paren: [ 2, { "anonymous": "always", "named": "never" } ]
+  space-before-function-paren: [ 1, { "anonymous": "always", "named": "never" } ]
   space-in-parens:        [ 2, never ]
   space-infix-ops:        2
   space-unary-ops:        2
   # Postponed
   #spaced-comment:         [ 1, always, { exceptions: [ '/', '=' ] } ]
-  strict:                 [ 2, global ]
-  quotes:                 [ 2, single, avoid-escape ]
+  strict:                 [ 1, global ]
+  quotes:                 [ 1, single, avoid-escape ]
   quote-props:            [ 1, 'as-needed', { "keywords": true } ]
   radix:                  2
   use-isnan:              2

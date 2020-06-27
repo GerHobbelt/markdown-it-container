@@ -1,9 +1,7 @@
-'use strict';
-
+/*eslint-env mocha*/
 
 let assert = require('assert');
 
-/*eslint-env mocha*/
 
 describe('api', function () {
   it('container renderer', function () {

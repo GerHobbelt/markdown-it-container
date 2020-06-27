@@ -9,7 +9,12 @@
   ],
   "repository": "GerHobbelt/markdown-it-container",
   "license": "MIT",
-  "main": "index.js",
+  "source": "index.js",
+  "main": "dist/markdownItContainer.js",
+  "module": "dist/markdownItContainer.mjs",
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
     "build": "make",
     "test": "make test",
@@ -23,19 +28,15 @@
     "pub": "npm publish --access public"
   },
   "devDependencies": {
-    "@gerhobbelt/markdown-it": "10.0.0-34",
-    "@gerhobbelt/markdown-it-testgen": "0.1.6-7",
-    "browserify": "16.5.1",
+    "@gerhobbelt/markdown-it": "11.0.1-41",
+    "@gerhobbelt/markdown-it-testgen": "0.1.6-8",
+    "@gerhobbelt/prepend-header": "1.0.8-3",
     "chai": "4.2.0",
     "cross-env": "7.0.2",
-    "eslint": "7.0.0",
-    "mocha": "7.1.2",
-    "nyc": "15.0.1",
-    "rollup": "2.9.0",
-    "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-json": "4.0.0",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "terser": "4.6.13"
+    "eslint": "7.3.1",
+    "microbundle": "0.12.2",
+    "mocha": "8.0.1",
+    "nyc": "15.1.0"
   },
   "reporter": [
     "lcov",
