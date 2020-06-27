@@ -1,6 +1,6 @@
 {
   "name": "@gerhobbelt/markdown-it-container",
-  "version": "2.0.1-3",
+  "version": "3.0.0-3",
   "description": "Plugin to create block-level custom containers for markdown-it markdown parser",
   "keywords": [
     "markdown-it-plugin",

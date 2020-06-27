@@ -6,11 +6,11 @@ let assert = require('assert');
 describe('coverage', function () {
   it('marker coverage', function () {
     let tok = require('@gerhobbelt/markdown-it')()
-                .use(require('../'), 'fox', {
-                  marker: 'foo',
-                  validate: function (p) { assert.equal(p, 'fox'); return 1; }
-                })
-                .parse('foofoofoofox\ncontent\nfoofoofoofoo\n');
+      .use(require('../'), 'fox', {
+        marker: 'foo',
+        validate: function (p) { assert.equal(p, 'fox'); return 1; }
+      })
+      .parse('foofoofoofox\ncontent\nfoofoofoofoo\n');
 
     assert.equal(tok[0].markup, 'foofoofoo');
     assert.equal(tok[0].info, 'fox');

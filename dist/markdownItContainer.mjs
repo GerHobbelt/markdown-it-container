@@ -1,9 +1,13 @@
-/*! markdown-it-container 2.0.1-3 https://github.com//GerHobbelt/markdown-it-container @license MIT */
+/*! markdown-it-container 3.0.0-3 https://github.com//GerHobbelt/markdown-it-container @license MIT */
 
 // Process block-level custom containers
 //
 module.exports = function container_plugin(md, name, options) {
-  function validateDefault(params) {
+  // Second param may be useful if you decide
+  // to increase minimal allowed marker length
+  function validateDefault(params
+  /*, markup*/
+  ) {
     return params.trim().split(' ', 2)[0] === name;
   }
 
@@ -64,7 +68,7 @@ module.exports = function container_plugin(md, name, options) {
     markup = state.src.slice(start, pos);
     params = state.src.slice(pos, max);
 
-    if (!validate(params)) {
+    if (!validate(params, markup)) {
       return false;
     } // Since start is found, we can report success here in validation mode
     //
