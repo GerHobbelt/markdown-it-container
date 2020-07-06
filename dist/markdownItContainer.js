@@ -149,12 +149,14 @@ module.exports = function container_plugin(md, name, options) {
     token.info = params;
     token.map = [startLine, nextLine];
     token.position = blockStart;
-    token.size = 0;
+    token.size = state.eMarks[nextLine] - blockStart;
 
     if (customContent) {
       token = state.push('container_' + name + '_content', 'div', 0);
       token.markup = state.src.slice(contentStart, start);
       token.block = true;
+      token.position = contentStart;
+      token.size = token.markup.length;
     } else {
       state.md.block.tokenize(state, startLine + 1, nextLine);
     }
