@@ -42,8 +42,9 @@ module.exports = function container_plugin(md, name, options) {
         token,
         old_parent,
         old_line_max,
+        blockStart,
         auto_closed = false,
-        start = state.bMarks[startLine] + state.tShift[startLine],
+        start = blockStart = state.bMarks[startLine] + state.tShift[startLine],
         max = state.eMarks[startLine]; // Check out the first character quickly,
     // this should filter out most of non-containers
     //
@@ -147,6 +148,8 @@ module.exports = function container_plugin(md, name, options) {
     token.block = true;
     token.info = params;
     token.map = [startLine, nextLine];
+    token.position = blockStart;
+    token.size = 0;
 
     if (customContent) {
       token = state.push('container_' + name + '_content', 'div', 0);
@@ -159,6 +162,8 @@ module.exports = function container_plugin(md, name, options) {
     token = state.push('container_' + name + '_close', 'div', -1);
     token.markup = state.src.slice(start, pos);
     token.block = true;
+    token.position = pos;
+    token.size = 0;
     state.parentType = old_parent;
     state.lineMax = old_line_max;
     state.line = nextLine + (auto_closed ? 1 : 0);
