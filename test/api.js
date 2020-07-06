@@ -40,6 +40,17 @@ describe('api', function () {
     assert.equal(res, '<div class="spoiler">\n<p><em>content</em></p>\n</div>\n');
   });
 
+  it('2 char 4 repeated marker', function () {
+    var res = require('@gerhobbelt/markdown-it')()
+      .use(require('../'), 'spoiler', {
+        marker: '->',
+        minMarkerCount: 4
+      })
+      .render('->->->-> spoiler\n*content*\n->->->->\n');
+
+    assert.equal(res, '<div class="spoiler">\n<p><em>content</em></p>\n</div>\n');
+  });
+
   it('marker should not collide with fence', function () {
     let res = require('@gerhobbelt/markdown-it')()
       .use(require('../'), 'spoiler', {

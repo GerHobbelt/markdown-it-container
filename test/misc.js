@@ -8,7 +8,10 @@ describe('coverage', function () {
     let tok = require('@gerhobbelt/markdown-it')()
       .use(require('../'), 'fox', {
         marker: 'foo',
-        validate: function (p) { assert.equal(p, 'fox'); return 1; }
+        validate: function (p) {
+          assert.equal(p, 'fox');
+          return 1;
+        }
       })
       .parse('foofoofoofox\ncontent\nfoofoofoofoo\n');
 
