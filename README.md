@@ -31,19 +31,27 @@ Difference is, that marker use another character and content is rendered as mark
 
 ## Installation
 
-node.js, browser:
+**node.js** & **bower**:
 
 ```bash
 $ npm install @gerhobbelt/markdown-it-container --save
 $ bower install @gerhobbelt/markdown-it-container --save
 ```
 
+**browser (CDN)**:
+
+* [jsDeliver CDN](https://www.jsdelivr.com/package/npm/markdown-it-container)
 
 ## API
 
 ```js
+// node.js
 var md = require('@gerhobbelt/markdown-it')()
             .use(require('@gerhobbelt/markdown-it-container'), name [, options]);
+
+// browser
+var md =  window.markdownit()
+            .use(window.markdownitContainer, name [, options]);
 ```
 
 Params:
@@ -62,10 +70,7 @@ Params:
 ## Example
 
 ```js
-var md = require('@gerhobbelt/markdown-it')();
-
-md.use(require('@gerhobbelt/markdown-it-container'), 'spoiler', {
-
+var options = {
   validate: function(params) {
     return params.trim().match(/^spoiler\s+(.*)$/);
   },
@@ -82,7 +87,15 @@ md.use(require('@gerhobbelt/markdown-it-container'), 'spoiler', {
       return '</details>\n';
     }
   }
-});
+};
+
+// node.js
+var md = require('@gerhobbelt/markdown-it')();
+md.use(require('@gerhobbelt/markdown-it-container'), 'spoiler', options);
+
+// or browser
+var md = window.markdownit();
+md.use(window.markdownitContainer, 'spoiler', options);
 
 console.log(md.render('::: spoiler click me\n*content*\n:::\n'));
 
