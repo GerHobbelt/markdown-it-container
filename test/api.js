@@ -41,7 +41,7 @@ describe('api', function () {
   });
 
   it('2 char 4 repeated marker', function () {
-    var res = require('@gerhobbelt/markdown-it')()
+    let res = require('@gerhobbelt/markdown-it')()
       .use(require('../'), 'spoiler', {
         marker: '->',
         minMarkerCount: 4
