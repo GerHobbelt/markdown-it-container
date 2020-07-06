@@ -53,7 +53,10 @@ Params:
    - __validate__ - optional, function to validate tail after opening marker, should
      return `true` on success.
    - __render__ - optional, renderer function for opening/closing tokens.
-   - __marker__ - optional (`:`), character to use in delimiter.
+   - __content__ - optional, renderer function for the container content.
+   - __marker__ - optional (`:`), character/string to use in delimiter.
+   - __endMarker__ - optional (default: same as __marker__), character/string to use in terminating delimiter. Specify when the closing mark differs from the starting mark of your container.
+   - __minMarkerCount__ - optional (`3`), character/string repeated number to use in delimiter.
 
 
 ## Example
