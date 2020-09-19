@@ -1,4 +1,7 @@
-const camelCase = require('camelcase');
+
+function camelCase(str) {
+  return str.replace(/-([\w])/g, (m, p1) => p1.toUpperCase());
+}
 
 const year = new Date().getFullYear();
 const pkg = require('../package.json');

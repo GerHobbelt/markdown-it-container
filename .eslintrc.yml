@@ -88,7 +88,7 @@ rules:
   no-label-var:           2
   no-labels:              2
   no-lone-blocks:         2
-  no-lonely-if:           2
+  no-lonely-if:           1
   no-loop-func:           2
   no-mixed-requires:      2
   no-mixed-spaces-and-tabs: 1
