@@ -15,7 +15,7 @@ CURR_HEAD   := $(firstword $(shell git show-ref --hash HEAD | cut -b -6) master)
 GITHUB_PROJ := https://github.com//GerHobbelt/${NPM_PACKAGE}
 
 
-build: report-config lintfix bundle test coverage todo 
+build: report-config lintfix bundle test coverage todo
 
 lint:
 	eslint .
