@@ -1,10 +1,8 @@
 /*! markdown-it-container 3.0.0-7 https://github.com//GerHobbelt/markdown-it-container @license MIT */
 
-'use strict';
-
 // Process block-level custom containers
 //
-module.exports = function container_plugin(md, name, options) {
+function container_plugin(md, name, options) {
   // Second param may be useful if you decide
   // to increase minimal allowed marker length
   function validateDefault(params
@@ -182,5 +180,7 @@ module.exports = function container_plugin(md, name, options) {
   }
 
   md.renderer.rules['container_' + name + '_close'] = render;
-};
-//# sourceMappingURL=markdownItContainer.js.map
+}
+
+export default container_plugin;
+//# sourceMappingURL=markdownItContainer.modern.js.map

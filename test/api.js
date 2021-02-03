@@ -1,12 +1,15 @@
-/*eslint-env mocha*/
+/* eslint-env mocha, es6 */
 
-let assert = require('assert');
+import assert from 'assert';
+import markdown_it from '@gerhobbelt/markdown-it';
+
+import plugin from '../index.js';
 
 
 describe('api', function () {
   it('container renderer', function () {
-    let res = require('@gerhobbelt/markdown-it')()
-      .use(require('../'), 'spoiler', {
+    let res = markdown_it()
+      .use(plugin, 'spoiler', {
         render: function (tokens, idx) {
           return tokens[idx].nesting === 1
             ? '<details><summary>click me</summary>\n'
@@ -19,8 +22,8 @@ describe('api', function () {
   });
 
   it('content renderer', function () {
-    let res = require('@gerhobbelt/markdown-it')()
-                .use(require('../'), 'spoiler', {
+    let res = markdown_it()
+                .use(plugin, 'spoiler', {
                   content: function (tokens, idx) {
                     return '<mark>' + tokens[idx].markup + '</mark>';
                   }
@@ -31,8 +34,8 @@ describe('api', function () {
   });
 
   it('2 char marker', function () {
-    let res = require('@gerhobbelt/markdown-it')()
-      .use(require('../'), 'spoiler', {
+    let res = markdown_it()
+      .use(plugin, 'spoiler', {
         marker: '->'
       })
       .render('->->-> spoiler\n*content*\n->->->\n');
@@ -41,8 +44,8 @@ describe('api', function () {
   });
 
   it('2 char 4 repeated marker', function () {
-    let res = require('@gerhobbelt/markdown-it')()
-      .use(require('../'), 'spoiler', {
+    let res = markdown_it()
+      .use(plugin, 'spoiler', {
         marker: '->',
         minMarkerCount: 4
       })
@@ -52,8 +55,8 @@ describe('api', function () {
   });
 
   it('marker should not collide with fence', function () {
-    let res = require('@gerhobbelt/markdown-it')()
-      .use(require('../'), 'spoiler', {
+    let res = markdown_it()
+      .use(plugin, 'spoiler', {
         marker: '`'
       })
       .render('``` spoiler\n*content*\n```\n');
@@ -62,8 +65,8 @@ describe('api', function () {
   });
 
   it('marker should not collide with fence #2', function () {
-    let res = require('@gerhobbelt/markdown-it')()
-      .use(require('../'), 'spoiler', {
+    let res = markdown_it()
+      .use(plugin, 'spoiler', {
         marker: '`'
       })
       .render('\n``` not spoiler\n*content*\n```\n');
@@ -73,8 +76,8 @@ describe('api', function () {
 
   describe('validator', function () {
     it('should skip rule if return value is falsy', function () {
-      let res = require('@gerhobbelt/markdown-it')()
-        .use(require('../'), 'name', {
+      let res = markdown_it()
+        .use(plugin, 'name', {
           validate: function () { return false; }
         })
         .render(':::foo\nbar\n:::\n');
@@ -83,8 +86,8 @@ describe('api', function () {
     });
 
     it('should accept rule if return value is true', function () {
-      let res = require('@gerhobbelt/markdown-it')()
-        .use(require('../'), 'name', {
+      let res = markdown_it()
+        .use(plugin, 'name', {
           validate: function () { return true; }
         })
         .render(':::foo\nbar\n:::\n');
@@ -95,8 +98,8 @@ describe('api', function () {
     it('rule should call it', function () {
       let count = 0;
 
-      require('@gerhobbelt/markdown-it')()
-        .use(require('../'), 'name', {
+      markdown_it()
+        .use(plugin, 'name', {
           validate: function () { count++; }
         })
         .parse(':\n::\n:::\n::::\n:::::\n', {});
@@ -107,16 +110,16 @@ describe('api', function () {
     });
 
     it('should not trim params', function () {
-      require('@gerhobbelt/markdown-it')()
-        .use(require('../'), 'name', {
+      markdown_it()
+        .use(plugin, 'name', {
           validate: function (p) { assert.equal(p, ' \tname '); return 1; }
         })
         .parse('::: \tname \ncontent\n:::\n', {});
     });
 
     it('should allow analyze mark', function () {
-      let md = require('@gerhobbelt/markdown-it')()
-        .use(require('../'), 'name', {
+      let md = markdown_it()
+        .use(plugin, 'name', {
           validate: function (__, mark) { return mark.length >= 4; }
         });
 

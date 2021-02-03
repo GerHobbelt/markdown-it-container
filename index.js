@@ -1,7 +1,7 @@
 // Process block-level custom containers
 //
 
-module.exports = function container_plugin(md, name, options) {
+export default function container_plugin(md, name, options) {
 
   // Second param may be useful if you decide
   // to increase minimal allowed marker length
@@ -161,4 +161,4 @@ module.exports = function container_plugin(md, name, options) {
     md.renderer.rules['container_' + name + '_content'] = options.content;
   }
   md.renderer.rules['container_' + name + '_close'] = render;
-};
+}

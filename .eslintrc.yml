@@ -9,12 +9,16 @@ parserOptions:
   ecmaVersion: 2020
   sourceType: module
   
+ignorePatterns:
+  - coverage/
+  - dist/
+  
 rules:
   accessor-pairs:         2
   array-bracket-spacing:  [ 2, "always", { "singleValue": true, "objectsInArrays": true, "arraysInArrays": true } ]
   block-scoped-var:       1
   block-spacing:          2
-  brace-style:            [ 2, '1tbs', { allowSingleLine: true } ]
+  brace-style:            [ 1, '1tbs', { allowSingleLine: true } ]
   # Postponed
   #callback-return:        2
   comma-dangle:           2
@@ -88,7 +92,7 @@ rules:
   no-label-var:           2
   no-labels:              2
   no-lone-blocks:         2
-  no-lonely-if:           2
+  no-lonely-if:           1
   no-loop-func:           2
   no-mixed-requires:      2
   no-mixed-spaces-and-tabs: 1

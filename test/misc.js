@@ -1,12 +1,17 @@
-/*eslint-env mocha*/
+/* eslint-env mocha, es6 */
 
-let assert = require('assert');
+import assert from 'assert';
+import markdown_it from '@gerhobbelt/markdown-it';
+
+
+
+import plugin from '../index.js';
 
 
 describe('coverage', function () {
   it('marker coverage', function () {
-    let tok = require('@gerhobbelt/markdown-it')()
-      .use(require('../'), 'fox', {
+    let tok = markdown_it()
+      .use(plugin, 'fox', {
         marker: 'foo',
         validate: function (p) {
           assert.equal(p, 'fox');
