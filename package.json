@@ -11,7 +11,7 @@
   "license": "MIT",
   "type": "module",
   "source": "index.js",
-  "main": "./dist/markdownItContainer.js",
+  "main": "./dist/markdownItContainer.cjs",
   "module": "./dist/markdownItContainer.mjs",
   "exports": "./dist/markdownItContainer.modern.js",
   "unpkg": "./dist/markdownItContainer.umd.js",
