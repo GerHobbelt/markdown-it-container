@@ -15,7 +15,7 @@ import plugin from '../index.js';
 
 
 describe('default container', function () {
-  let md = markdown_it()
+  const md = markdown_it()
     .use(plugin, 'name');
 
   generate(path.join(__dirname, 'fixtures/default.txt'), md);

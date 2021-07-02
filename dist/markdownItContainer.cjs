@@ -1,5 +1,7 @@
 /*! markdown-it-container 3.0.0-8 https://github.com//GerHobbelt/markdown-it-container @license MIT */
 
+'use strict';
+
 // Process block-level custom containers
 //
 function container_plugin(md, name, options) {
@@ -21,15 +23,15 @@ function container_plugin(md, name, options) {
   }
 
   options = options || {};
-  let min_markers = options.minMarkerCount || 3,
-      marker_str = options.marker || ':',
-      end_marker_str = options.endMarker || marker_str,
-      end_marker_len = end_marker_str.length,
-      marker_char = marker_str.charCodeAt(0),
-      marker_len = marker_str.length,
-      validate = options.validate || validateDefault,
-      render = options.render || renderDefault,
-      customContent = !!options.content;
+  const min_markers = options.minMarkerCount || 3,
+        marker_str = options.marker || ':',
+        end_marker_str = options.endMarker || marker_str,
+        end_marker_len = end_marker_str.length,
+        marker_char = marker_str.charCodeAt(0),
+        marker_len = marker_str.length,
+        validate = options.validate || validateDefault,
+        render = options.render || renderDefault,
+        customContent = !!options.content;
 
   function container(state, startLine, endLine, silent) {
     let pos,
@@ -79,7 +81,7 @@ function container_plugin(md, name, options) {
       return true;
     }
 
-    let contentStart = max; // Search for the end of the block
+    const contentStart = max; // Search for the end of the block
     //
 
     nextLine = startLine;
@@ -182,5 +184,5 @@ function container_plugin(md, name, options) {
   md.renderer.rules['container_' + name + '_close'] = render;
 }
 
-export default container_plugin;
-//# sourceMappingURL=markdownItContainer.modern.js.map
+module.exports = container_plugin;
+//# sourceMappingURL=markdownItContainer.cjs.map

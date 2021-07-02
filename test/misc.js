@@ -10,7 +10,7 @@ import plugin from '../index.js';
 
 describe('coverage', function () {
   it('marker coverage', function () {
-    let tok = markdown_it()
+    const tok = markdown_it()
       .use(plugin, 'fox', {
         marker: 'foo',
         validate: function (p) {

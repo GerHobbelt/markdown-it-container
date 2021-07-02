@@ -8,7 +8,7 @@ import plugin from '../index.js';
 
 describe('api', function () {
   it('container renderer', function () {
-    let res = markdown_it()
+    const res = markdown_it()
       .use(plugin, 'spoiler', {
         render: function (tokens, idx) {
           return tokens[idx].nesting === 1
@@ -22,7 +22,7 @@ describe('api', function () {
   });
 
   it('content renderer', function () {
-    let res = markdown_it()
+    const res = markdown_it()
                 .use(plugin, 'spoiler', {
                   content: function (tokens, idx) {
                     return '<mark>' + tokens[idx].markup + '</mark>';
@@ -34,7 +34,7 @@ describe('api', function () {
   });
 
   it('2 char marker', function () {
-    let res = markdown_it()
+    const res = markdown_it()
       .use(plugin, 'spoiler', {
         marker: '->'
       })
@@ -44,7 +44,7 @@ describe('api', function () {
   });
 
   it('2 char 4 repeated marker', function () {
-    let res = markdown_it()
+    const res = markdown_it()
       .use(plugin, 'spoiler', {
         marker: '->',
         minMarkerCount: 4
@@ -55,7 +55,7 @@ describe('api', function () {
   });
 
   it('marker should not collide with fence', function () {
-    let res = markdown_it()
+    const res = markdown_it()
       .use(plugin, 'spoiler', {
         marker: '`'
       })
@@ -65,7 +65,7 @@ describe('api', function () {
   });
 
   it('marker should not collide with fence #2', function () {
-    let res = markdown_it()
+    const res = markdown_it()
       .use(plugin, 'spoiler', {
         marker: '`'
       })
@@ -76,7 +76,7 @@ describe('api', function () {
 
   describe('validator', function () {
     it('should skip rule if return value is falsy', function () {
-      let res = markdown_it()
+      const res = markdown_it()
         .use(plugin, 'name', {
           validate: function () { return false; }
         })
@@ -86,7 +86,7 @@ describe('api', function () {
     });
 
     it('should accept rule if return value is true', function () {
-      let res = markdown_it()
+      const res = markdown_it()
         .use(plugin, 'name', {
           validate: function () { return true; }
         })
@@ -118,7 +118,7 @@ describe('api', function () {
     });
 
     it('should allow analyze mark', function () {
-      let md = markdown_it()
+      const md = markdown_it()
         .use(plugin, 'name', {
           validate: function (__, mark) { return mark.length >= 4; }
         });

@@ -18,17 +18,15 @@ GITHUB_PROJ := https://github.com//GerHobbelt/${NPM_PACKAGE}
 build: report-config lintfix bundle test coverage todo
 
 lint:
-	eslint .
+	eslint . --ext .js,.ts
 
 lintfix:
-	eslint --fix .
+	eslint --fix . --ext .js,.ts
 
 bundle:
 	-rm -rf ./dist
 	mkdir dist
-	microbundle --no-compress --target node --strict --name ${GLOBAL_NAME} -f modern
-	mv dist/${GLOBAL_NAME}.modern.js dist/${GLOBAL_NAME}.js
-	mv dist/${GLOBAL_NAME}.modern.js.map dist/${GLOBAL_NAME}.js.map
+	microbundle --no-compress --target node --strict --name ${GLOBAL_NAME}
 	npx prepend-header 'dist/*js' support/header.js
 
 test:
@@ -77,12 +75,16 @@ superclean: clean
 prep: superclean
 	-ncu -a --packageFile=package.json
 	-npm install
+	-npm prune
 	-npm audit fix
 
 prep-ci: clean
 	-rm -rf ./node_modules/
 	-npm ci
+	-npm prune
 	-npm audit fix
+	-mocha --version
+	-node --version
 
 report-config:
 	-echo "NPM_PACKAGE=${NPM_PACKAGE} NPM_VERSION=${NPM_VERSION} GLOBAL_NAME=${GLOBAL_NAME} BUNDLE_NAME=${BUNDLE_NAME} TMP_PATH=${TMP_PATH} REMOTE_NAME=${REMOTE_NAME} REMOTE_REPO=${REMOTE_REPO} CURR_HEAD=${CURR_HEAD}"

@@ -1,9 +1,0 @@
-language: node_js
-node_js:
-  - 'lts/*'
-  - 12
-  - 14
-  - node
-script: npm run build
-before_install: make prep-ci
-after_success: npm run cov
