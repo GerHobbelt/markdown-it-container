@@ -1,4 +1,4 @@
-/*! markdown-it-container 3.0.0-10 https://github.com//GerHobbelt/markdown-it-container @license MIT */
+/*! markdown-it-container 3.0.0-11 https://github.com//GerHobbelt/markdown-it-container @license MIT */
 
 'use strict';
 
