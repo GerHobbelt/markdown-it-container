@@ -11,11 +11,11 @@
   "license": "MIT",
   "type": "module",
   "source": "index.js",
-  "main": "dist/markdownItContainer.js",
-  "module": "dist/markdownItContainer.mjs",
-  "exports": "dist/markdownItContainer.modern.js",
-  "unpkg": "dist/markdownItContainer.umd.js",
-  "umd:main": "dist/markdownItContainer.umd.js",
+  "main": "./dist/markdownItContainer.js",
+  "module": "./dist/markdownItContainer.mjs",
+  "exports": "./dist/markdownItContainer.modern.js",
+  "unpkg": "./dist/markdownItContainer.umd.js",
+  "umd:main": "./dist/markdownItContainer.umd.js",
   "engines": {
     "node": ">=12.21"
   },
