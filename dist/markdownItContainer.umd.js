@@ -1,4 +1,4 @@
-/*! markdown-it-container 3.0.0-8 https://github.com//GerHobbelt/markdown-it-container @license MIT */
+/*! markdown-it-container 3.0.0-9 https://github.com//GerHobbelt/markdown-it-container @license MIT */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
